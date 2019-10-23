@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+
+  int q,n;
+  string output = "";
+  cin >> q;
+  int sum = 0;
+  int min = 0;
+  double average;
+
+  for(int i = 0; i < q; i++) {
+    cin >> n;
+    int temp;
+    for(int j = 0; j < n; j++) {
+      cin >> temp;
+      sum += temp;
+    }
+
+    average = (double)sum / n;
+
+    temp = ceil(average);
+
+    output += to_string(temp);
+    if(i+1 < q) {
+      output += "\n";
+    }
+    sum = 0;
+    
+  }
+
+  cout << output;
+
+}
+

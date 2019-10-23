@@ -1,0 +1,16 @@
+#include <iostream>
+#include <map>
+#include <iterator>
+
+using namepsace std;
+
+int main() {
+  string line;
+  map<char,int> con;
+  for(int i = 0; i < 4; i++) {
+    getline(cin,line);
+    for(int j = 0; j < line.length(); j++) {
+      con[line[j]]++;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+  int q, n;
+  cin >> q;
+  while (q--) {
+    cin >> n;
+    vector<int> original;
+    int temp;
+    int origpos;
+    for(int i = 0; i < n; i++) {
+      cin >> temp;
+      original.push_back(temp);
+      if(temp == n) {origpos = i;}
+    }
+    int days = 0, newpos = origpos;
+    bool home = false;
+    while(!home) {
+      newpos = original[newpos];
+      if(newpos == origpos) {
+	home = true;
+      }
+      days++;
+    }
+    cout << days << endl;
+  }
+}

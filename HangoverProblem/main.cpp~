@@ -1,0 +1,13 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+  map<double,int> values;
+  double input;
+  while(cin >> input) {
+    auto it = values.lower_bound(input);
+    if(it != values.end()) {
+      printf("%d card(s)",*it);
+    } else {
+      for (int i = 0; 

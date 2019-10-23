@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int gcd(int a, int b) {
+  if (b) return (b,a%b);
+  return a;
+}
+
+int main() {
+  int n, temp;
+  cin >> n;
+  cin >> temp;
+  n--;
+  int currgcd = 
+  

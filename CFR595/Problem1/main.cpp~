@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+  int q, n;
+  cin >> q;
+  while(q--) {
+    vector<set<int,greater<int>>> teams;
+    cin >> n;
+    int temp;
+    cin >> temp;
+    set<int,greater<int>> ini;
+    ini.insert(temp);
+    teams.push_back(ini);
+    int currsize = 1;
+    for(int i = 0; i < n; i++) {
+      cin >> temp;
+      bool placed;
+      for(int j = 0; j < currsize; j++) {
+	set<int,greater<int>>::iterator k;
+	for(k = teams[j].begin(); k != teams[j].end(); k++) {
+	  if(abs(*k - temp) == 1) break;
+	  if(*k < temp) {teams[j].insert(temp); placed = true;} 
+	}
+	k--;
+	if(*k > temp && abs(*k - temp) != 1) {teams[j].insert(temp); placed = true;}
+      }
+      if(!placed) {
+	set<int,greater<int>> on;
+	on.insert(temp);
+	teams.push_back(on);
+	currsize++;
+      }
+      cout << currsize << endl;
+    }
+  }
+}
