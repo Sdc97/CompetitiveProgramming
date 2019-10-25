@@ -8,17 +8,34 @@ int main() {
   cin >> q;
   while (q--) {
     cin >> n;
-    map<int,int> original;
-    vector<set<int>> order;
+    vector<set<int>> order(1);
     int temp;
+    vector<int> original(n);
     for(int i = 0; i < n; i++) {
       cin >> temp;
-      original[i+1] = temp;
+      for(int j = 0; j < order.size(); j++) {
+	if(order[j].find(temp) == order[j].end() && order[j].find(i+1) == order[j].end()) {
+	  order[j].insert(temp);
+	} else if (j == order.size()-1) {
+	  set<int> curr;
+	  curr.insert(temp);
+	  order.push_back(curr);
+	}
+      }
+      original[i] = temp;
     }
-    set<int> init;
-    init.insert(original[1]);
-    order.push_back(init);
-    
+
+    for(int i = 0; i < n; i++) {
+      int size;
+      for(int j = 0; j < order.size(); j++) {
+	auto it = order[j].find(i+1);
+	if(it != order[j].end()) {
+	  size = order[j].size();
+	  break;
+	}
+      }
+      cout << size << " ";
+    }
     cout << endl;
   }
 }
